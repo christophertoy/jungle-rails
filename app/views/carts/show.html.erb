@@ -1,7 +1,9 @@
 <section class="cart-show">
 
 <% if enhanced_cart.length == 0 %>
-<h1>Your cart is empty.</h1>
+<div class="alert alert-info">
+<strong>Your cart is empty! </strong>
+</div>
 <%= link_to "Add items to your cart", root_path, class: 'btn btn-lg btn-primary' %>
 <% else %>
 
