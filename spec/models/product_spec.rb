@@ -10,8 +10,9 @@ RSpec.describe Product, type: :model do
         quantity: 5,
         category: @category
       )
+      @product.save
       @product.valid?
-
+      expect(@product.errors.full_messages).to be_empty
     end
 
     it 'should receive an error message when name is not present' do
@@ -22,6 +23,7 @@ RSpec.describe Product, type: :model do
         quantity: 5,
         category: @category
       )
+      @product.save
       @product.valid?
      
       expect(@product.errors.full_messages).to include("Name can't be blank")
@@ -35,8 +37,8 @@ RSpec.describe Product, type: :model do
         quantity: 5,
         category: @category
       )
+      @product.save
       @product.valid?
-     
       expect(@product.errors.full_messages).to include("Price can't be blank")
     end
 
@@ -48,8 +50,8 @@ RSpec.describe Product, type: :model do
         quantity: nil,
         category: @category
       )
+      @product.save
       @product.valid?
-     
       expect(@product.errors.full_messages).to include("Quantity can't be blank")
     end
 
@@ -61,8 +63,8 @@ RSpec.describe Product, type: :model do
         quantity: 10,
         category: nil
       )
+      @product.save
       @product.valid?
-     
       expect(@product.errors.full_messages).to include("Category can't be blank")
     end
   end
